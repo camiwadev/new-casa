@@ -1,0 +1,136 @@
+<!-- <div class="grid-container">
+    <div class="grid-item" *ngFor="let image of images">
+      <a [href]="image.src" data-size="1600x1067">
+        <img [src]="image.thumb" class="thumbnail" alt="Image thumbnail">
+      </a>
+    </div>
+  </div> -->
+  
+
+    <div class="breadcrumb-wrapper section-padding bg-cover" style="background-image: url('assets/img/contact.jpg');">
+      <div class="container">
+          <div class="page-heading">
+              <h1 class="wow fadeInUp" data-wow-delay=".3s">Projects</h1>
+              <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                  <li>
+                      <a>
+                      Home
+                      </a>
+                  </li>
+                  <li>
+                      <i class="fas fa-chevron-right"></i>
+                  </li>
+                  <li>
+                      Gallery
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <!-- Portfolio Section Start -->
+  <section class="portfolio-section fix section-padding">
+    <div class="portfolio-wrapper style-2">
+        <!-- Etiquetas de Filtro -->
+        <div class="filter-buttons">
+            <button class="filter-btn" onclick="filterItems('all')">Todos</button>
+            <button class="filter-btn" onclick="filterItems('image')">Imágenes</button>
+            <button class="filter-btn" onclick="filterItems('video')">Videos</button>
+        </div>
+        
+        <div class="row g-4 portfolio-items-wrapper">
+            <!-- Agrega una clase adicional para imágenes o videos -->
+       
+        <!--     <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 portfolio-item video">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/video-thumbnail.jpg');"></div>
+                </div>
+            </div> -->
+          
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/01.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/02.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/03.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/04.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/05.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/06.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/07.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <div class="portfolio-image bg-cover" style="background-image: url('assets/img/project/08.jpg');">
+                        
+                     </div>
+                </div>
+            </div>
+            <!-- Repite los elementos con la clase adecuada -->
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- Cta Section Start -->
+  <section class="cta-banner-section-2">
+      <div class="container">
+          <div class="cta-banner-wrapper-2">
+              <div class="cta-image wow fadeInUp" data-wow-delay=".3s">
+                  <img src="assets/img/cta-img.png" alt="cta-img">
+                  <div class="circle-shape">
+                      <img src="assets/img/circle-border.png" alt="shape-img">
+                  </div>
+              </div>
+              <div class="section-title-area">
+                  <div class="section-title mb-0">
+                      <h2 class="text-white wow fadeInUp" data-wow-delay=".5s">
+                          Crafting spaces that <br> the reflect style
+                      </h2>
+                  </div>
+                  <a (click)="router.navigate(['/contact'])" class="theme-btn bg-white padding-style wow fadeInUp" data-wow-delay=".7s">
+                      Get In Touch
+                      <i class="fas fa-long-arrow-right"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>

@@ -16,6 +16,7 @@ export class App {
   layoutStyle: string = "default";
   deviceInfo: any = null
   phoneNumber: string = '9198855401';
+  email: string = 'admin@casainstall.com';
   menuOpen: boolean = false;
 
   constructor(
@@ -44,7 +45,7 @@ export class App {
 
     )
       .then(() => {
-        // console.log('Todos los scripts se cargaron correctamente');
+         console.log('Todos los scripts se cargaron correctamente');
       })
       .catch(error => console.log(error));
       
@@ -61,6 +62,9 @@ export class App {
   
     makeCall() {
       window.open(`tel:${this.phoneNumber}`, '_self');
+    }
+    sendEmail() {
+      window.open(`mailto:${this.email}`, '_self');
     }
 
 }

@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +12,19 @@ import { Router } from '@angular/router';
   styleUrl: './services2.scss',
 })
 export class Services2 {
-  constructor(public router: Router) {}
+isBrowser: boolean = false;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public router: Router) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+ ngOnInit(): void {
+        if (!this.isBrowser) return;
+
+      window.scrollTo(0, 0);
+  }
+  ngAfterViewInit(): void {
+      if (!this.isBrowser) return;
+
+    window.scrollTo(0, 0);
+  }
 }

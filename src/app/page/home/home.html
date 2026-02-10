@@ -1,4 +1,4 @@
-<section class="hero-section hero-3 fix">
+<!-- <section class="hero-section hero-3 fix">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6">
@@ -11,7 +11,8 @@
                     </p>
                     <div class="hero-button">
 
-                        <a class="theme-btn radius-none padding-style wow fadeInUp" data-wow-delay=".7s" (click)="router.navigate(['/gallery'])">
+                        <a class="theme-btn radius-none padding-style wow fadeInUp" data-wow-delay=".7s"
+                            (click)="router.navigate(['/gallery'])">
                             View Works
                             <i class="fas fa-long-arrow-right"></i>
                         </a>
@@ -23,25 +24,25 @@
                                 <p>Call Us Now</p>
                                 <h4>
                                     <button class="fab" (click)="toggleMenu($event)">
-                                        
+
                                         <span class="phone-number">(919) 885-5401</span>
                                     </button>
-                                   
+
                                 </h4>
                                 <div class="fab-menu" [class.show]="menuOpen">
                                     <button (click)="sendSMS()">Send SMS</button>
                                     <button (click)="makeCall()">Make Call</button>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-6">
-                <div class="hero-slider-items">
-                    <div class="swiper hero-slider">
+                <div class="hero-slider-items">                    
+                    <div class="swiper hero-slider" id="heroSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="hero-image">
@@ -64,8 +65,168 @@
             </div>
         </div>
     </div>
+</section>  -->
+<section class="hero-section hero-1">
+
+    <div class="hero-image-2 wow fadeInUp" data-wow-delay=".4s">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h4 class="wow fadeInUp text-left" >Welcome</h4>
+                    <h1 class="wow fadeInUp" data-wow-delay=".3s">
+                       <span style="color: #e26a2c;">CASA</span> <br> WALLPAPER
+                    </h1>
+                    <p class="wow fadeInUp" data-wow-delay=".5s">
+                        Transform your space with professional wallpaper installations for both homes and businesses.
+                        Elegant, impeccable results tailored to your unique style, whether for residential comfort or
+                        commercial impact.</p>
+                    <div class="hero-button">
+
+                        <div class="hero-actions">
+                            <a class="btn-primary" (click)="router.navigate(['/gallery'])">
+                                View Works
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+
+                            <div class="call-cta" (click)="toggleMenu($event)">
+                                <button class="fab">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>(919) 885-5401</span>
+                                </button>
+                            </div>
+                             <div class="fab-menu" [class.show]="menuOpen">
+                                    <button (click)="sendSMS()">Send SMS</button>
+                                    <button (click)="makeCall()">Make Call</button>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay=".7s">
+                <div class="hero-image bg-cover" style="background-image: url('assets/img/hero/01.jpg');">
+                    <div class="client-items float-bob-y">
+                        <img src="assets/img/hero/client.png" alt="img">
+                        <div class="client-content">
+                            <h3><span class="count">2,000</span>+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
+<section class="contact-section-4 fix section-padding pt-80">
+    <div class="container">
+        <div class="contact-wrapper-3">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="contact-content" style="background-color: #000; padding: 20px;">
+                        <div class="section-title">
+                            <span class="wow fadeInUp">Contact Us</span>
+                            <h2 class="wow fadeInUp" data-wow-delay=".3s" style="color: #fff;">Get In Touch</h2>
+                        </div>
+                        <form (ngSubmit)="sendContact()" #contactForm="ngForm" class="contact-form-items">
+                            <div class="row g-4">
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="form-clt">
+                                        <input type="text" name="name" id="name" placeholder="Your Name"
+                                            [(ngModel)]="form.name" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <input type="text" name="email" id="email" placeholder="Your Email"
+                                            [(ngModel)]="form.email" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <input type="number" name="phone" id="phone" placeholder="Phone Number"
+                                            [(ngModel)]="form.phone" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="form-clt">
+                                        <input type="number" name="zipcode" id="zipcode" placeholder="Zip Code"
+                                            [(ngModel)]="form.zipcode" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <div class="nice-select" tabindex="0">
+                                            <span class="current">Select Services</span>
+                                            <ul class="list">
+                                                <li data-value="1" class="option selected focus">Interior Painting</li>
+                                                <li data-value="2" class="option">Wallpaper installation or repair</li>
+                                                <li data-value="3" class="option">Wallpaper removal</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <div class="nice-select" tabindex="0">
+                                            <span class="current">Type of project</span>
+                                            <ul class="list">
+                                                <li data-value="1" class="option selected focus">Installation</li>
+                                                <li data-value="2" class="option">Repair</li>
+                                                <li data-value="3" class="option">Installation and repair</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
+                                    <div class="form-clt">
+                                        <textarea name="message" id="message" placeholder="Message here.."
+                                            [(ngModel)]="form.message"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 wow fadeInUp" data-wow-delay=".8s">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsCheck1">
+                                        <label class="form-check-label text-white" for="termsCheck1"
+                                            (click)="router.navigate(['/terms'])" style="text-align: justify;">
+                                            I consent to receive marketing text messages from Casa Wallpaper at the
+                                            phone number provided. Frequency may vary. Message & data rates may apply.
+                                            Text HELP for assistance, reply STOP to opt out.
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 wow fadeInUp" data-wow-delay=".8s">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsCheck2">
+                                        <label class="form-check-label text-white" for="termsCheck2"
+                                            (click)="router.navigate(['/terms'])" style="text-align: justify;">
+                                            I consent to receive non-marketing text messages from Casa Wallpaper about
+                                            my order updates, appointment reminders etc. Frequency may vary. Message &
+                                            data rates may apply. Text HELP for assistance, reply STOP to opt out
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-7 wow fadeInUp" data-wow-delay=".9s">
+                                    <button type="submit" class="theme-btn padding-style">
+                                        Book Now <i class="fas fa-long-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="text-align: center; color: rgb(218 116 63) !important;"> <a
+                                (click)="router.navigate(['/terms'])">Terms and Conditions</a> | <a
+                                (click)="router.navigate(['/policy'])">Privacy Policy</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="project-section fix section-padding" id="project">
     <div class="container">
         <div class="section-title text-center">
@@ -76,52 +237,21 @@
     <div class="project-wrapper">
         <div class="swiper project-slider">
             <div class="swiper-wrapper">
-                <!-- project.component.html -->
-               <!--  <div class="swiper-slide">
-                    <div class="project-carousel-items">
-                        <div class="project-video">
-                            <video src="assets/img/project/video.MOV" controls>
-                              
-                            </video>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="project-carousel-items">
-                        <div class="project-video">
-                            <video src="assets/img/project/video1.MOV" controls>
-                              
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="swiper-slide">
                     <div class="project-carousel-items">
                         <div class="project-image">
                             <img src="assets/img/project/01.jpg" alt="project-img">
-                           <!--  <div class="project-content">
-                                <h3>
-                                    <a>Your Business Our Expertise</a>
-                                </h3>
-                                <p>Sofa</p>
-                                <a class="icon"><i class="fas fa-long-arrow-right"></i></a>
-                            </div> -->
+
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="swiper-slide">
                     <div class="project-carousel-items">
                         <div class="project-image">
                             <img src="assets/img/project/02.jpg" alt="project-img">
-                           <!--  <div class="project-content">
-                                <h3>
-                                    <a>Your Business Our Expertise</a>
-                                </h3>
-                                <p>Sofa</p>
-                                <a class="icon"><i class="fas fa-long-arrow-right"></i></a>
-                            </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -129,13 +259,7 @@
                     <div class="project-carousel-items">
                         <div class="project-image">
                             <img src="assets/img/project/03.jpg" alt="project-img">
-                           <!--  <div class="project-content">
-                                <h3>
-                                    <a>Your Business Our Expertise</a>
-                                </h3>
-                                <p>Sofa</p>
-                                <a class="icon"><i class="fas fa-long-arrow-right"></i></a>
-                            </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -143,13 +267,7 @@
                     <div class="project-carousel-items">
                         <div class="project-image">
                             <img src="assets/img/project/04.jpg" alt="project-img">
-                           <!--  <div class="project-content">
-                                <h3>
-                                    <a>Your Business Our Expertise</a>
-                                </h3>
-                                <p>Sofa</p>
-                                <a class="icon"><i class="fas fa-long-arrow-right"></i></a>
-                            </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -196,7 +314,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="swiper-slide">
                                     <div class="testimonial-items">
                                         <div class="icon">
@@ -206,10 +324,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/2.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -221,10 +339,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/3.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -236,10 +354,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/4.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -251,10 +369,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/5.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -266,10 +384,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/6.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -281,10 +399,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/7.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -296,10 +414,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/8.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -311,10 +429,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/9.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -326,10 +444,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/10.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -341,10 +459,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/11.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -356,10 +474,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/12.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -371,10 +489,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/13.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -386,10 +504,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/14.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -401,10 +519,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/15.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -416,10 +534,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/16.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -431,10 +549,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/17.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -446,10 +564,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/18.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -461,10 +579,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/19.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -476,10 +594,10 @@
                                             <div class="client-image bg-cover"
                                                 style="background-image: url('assets/img/testimonial/20.png');">
                                             </div>
-                                           
+
                                         </div>
-                                       
-                                      
+
+
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -620,10 +738,13 @@
                                     </div>
                                     <div class="content">
                                         <h3>
-                                            <a (click)="router.navigate(['/services2'])">Wallpaper installation or repair</a>
+                                            <a (click)="router.navigate(['/services2'])">Wallpaper installation or
+                                                repair</a>
                                         </h3>
                                         <p>
-                                            Elevate your space with our professional wallpaper installation and repair service. Perfect finish, we take care of every detail to make your vision a reality
+                                            Elevate your space with our professional wallpaper installation and repair
+                                            service. Perfect finish, we take care of every detail to make your vision a
+                                            reality
                                         </p>
                                         <a (click)="router.navigate(['/services2'])" class="link-btn">
                                             Check It Out <i class="fas fa-long-arrow-right"></i>
@@ -656,126 +777,10 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 wow fadeInUp" data-wow-delay=".9s">
-                    <div class="service-image bg-cover"
-                        style="background-image: url('assets/img/service/01.jpg');"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<section class="contact-section fix section-padding pt-0" id="contact">
-    <div class="container">
-        <div class="contact-wrapper">
-            <div class="row align-items-center g-0">
-                <div class="col-xl-7">
-                    <div class="contact-left">
-                        <div class="section-title">
-                            <span class="wow fadeInUp">Stay Connected</span>
-                            <h2 class="text-white wow fadeInUp" data-wow-delay=".3s">Create a better space</h2>
-                        </div>
-                       <!--  <form [formGroup]="ngFormRequest" (ngSubmit)="saveRequest()" class="contact-form-items mt-4 mt-md-0">
-                            <div class="row g-4">
-                              <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="form-clt">
-                                  <input type="text" placeholder="Your Name" id="name" name="name" formControlName="name"
-                                    [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
-                                  <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['name'].errors['required']">Required name.</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                <div class="form-clt">
-                                  <input type="text" name="email" id="email" placeholder="Your Email" formControlName="email"
-                                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
-                                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['email'].errors['required']">Required email.</div>
-                                    <div *ngIf="f['email'].errors['email']">Invalid email format.</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                <div class="form-clt">
-                                  <input type="text" name="phone" id="phone" placeholder="Phone Number" formControlName="phone"
-                                    [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }">
-                                  <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['phone'].errors['required']">Required phone.</div>
-                                    <div *ngIf="f['phone'].errors['pattern']">Invalid phone number.</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="form-clt">
-                                  <input type="text" name="zipcode" id="zipcode" placeholder="Zip Code" formControlName="zipcode"
-                                    [ngClass]="{ 'is-invalid': submitted && f['zipcode'].errors }">
-                                  <div *ngIf="submitted && f['zipcode'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['zipcode'].errors['required']">Required zip code.</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                <div class="form-clt">
-                                  <select id="servicesType" name="servicesType" class="form-control" formControlName="servicesType" 
-                                    [ngClass]="{ 'is-invalid': submitted && f['servicesType'].errors }">
-                                    <option value="">Select Services</option>
-                                    <option value="Interior Painting">Interior Painting</option>
-                                    <option value="Wallpaper installation or repair">Wallpaper installation or repair</option>
-                                    <option value="Wallpaper removal">Wallpaper removal</option>
-                                  </select>
-                                  <div *ngIf="submitted && f['servicesType'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['servicesType'].errors['required']">Required services Type.</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                <div class="form-clt">
-                                  <select id="projectType" name="projectType" class="form-control" formControlName="projectType" 
-                                    [ngClass]="{ 'is-invalid': submitted && f['projectType'].errors }">
-                                    <option value="">Type of project</option>
-                                    <option value="installation">Installation</option>
-                                    <option value="repair">Repair</option>
-                                    <option value="installation and repair">Installation and repair</option>
-                                  </select>
-                                  <div *ngIf="submitted && f['projectType'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['projectType'].errors['required']">Required type of project.</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
-                                <div class="form-clt">
-                                  <textarea name="message" id="message" placeholder="Message here.." formControlName="message"
-                                    [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"></textarea>
-                                  <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['message'].errors['required']">Message is required.</div>
-                                  </div>
-                                </div>
-                              </div>
-                               <div class="col-12 wow fadeInUp" data-wow-delay=".8s">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
-                                        <label class="form-check-label text-white" for="termsCheck" (click)="virtualRouter.setRoute('terms')" style="cursor: pointer;">
-                                            By submitting this form, you agree to receive text messages related to our services. You can unsubscribe at any time.
-                                        </label>
-                                    </div>
-                                </div>
-                              <div class="col-lg-7 wow fadeInUp" data-wow-delay=".3s">
-                                <button type="submit" id="submit-form" class="theme-btn padding-style">
-                                  Book Now <i class="fas fa-long-arrow-right"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </form> -->
-                          
+                    <div class="service-image bg-cover" style="background-image: url('assets/img/service/01.jpg');">
                     </div>
                 </div>
-                <div class="col-xl-5 mt-5 mt-xl-0">
-                    <div class="contact-image bg-cover" style="background-image: url('assets/img/contact-bg.jpg');"></div>
-                </div>
             </div>
         </div>
     </div>
 </section>
-

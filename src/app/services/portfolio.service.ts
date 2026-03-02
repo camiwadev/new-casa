@@ -51,4 +51,14 @@ export class PortfolioService {
     console.log('Respuesta de PB:', result);
     return result;
   }
+
+  async getPortfolios() {
+    return await this.authService.pb.collection('potfolioCasa').getFullList({
+      sort: '-created',
+    });
+  }
+
+  fileUrl(record: any, fileName: string): string | null {
+    return this.authService.pb.files.getUrl(record, fileName);
+  }
 }

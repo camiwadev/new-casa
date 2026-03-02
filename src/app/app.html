@@ -10,6 +10,12 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
     </svg>
   </div>
+  <button class="calculator-floating-btn"
+        (click)="openCalculator()">
+    <i class="fas fa-calculator"></i>
+  </button>
+  <app-calculator #calculator></app-calculator>
+
 <div class="floating-button">
     <button class="fab" (click)="toggleMenu()">
       <i class="fa fa-phone"></i>

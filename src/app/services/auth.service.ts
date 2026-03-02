@@ -41,7 +41,7 @@ export class AuthPocketbaseService {
   }
 
   constructor(private router: Router) {
-    this.pb = new PocketBase('');
+    this.pb = new PocketBase('https://db.buckapi.site:8091');
   }
 
   logout() {

@@ -9,6 +9,9 @@ import { Services2 } from './page/services2/services2';
 import { Services3 } from './page/services3/services3';
 import { Gallery } from './page/gallery/gallery';
 import { Policy } from './page/policy/policy';
+import { Faqs } from './page/faqs/faqs';
+import { Calculator } from './page/calculator/calculator';
+
 
 export const routes: Routes = [
   {
@@ -105,6 +108,77 @@ export const routes: Routes = [
     data: {
       description: 'Read our policy page for using our services.',
       canonical: '/policy',
+    },
+  },
+  {
+    path: 'faqs',
+    loadComponent: () =>
+      import('./page/faqs/faqs').then(c => c.Faqs),
+    title: 'FAQs',
+    data: {
+      description: 'Read our FAQs page for using our services.',
+      canonical: '/faqs',
+    },
+  },
+  {
+    path: 'calculator',
+    loadComponent: () =>
+      import('./page/calculator/calculator').then(c => c.Calculator),
+    title: 'Calculator',
+    data: {
+      description: 'Read our calculator page for using our services.',
+      canonical: '/calculator',
+    },
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./page/login/login').then(c => c.Login),
+    title: 'Login',
+    data: {
+      description: 'Read our login page for using our services.',
+      canonical: '/login',
+    },
+  },
+  {
+    path: 'portfolioDashboard',
+    loadComponent: () =>
+      import('./page/dashboard/portfolio/portfolio').then(c => c.Portfolio),
+    title: 'Portfolio',
+    data: {
+      description: 'Read our portfolio page for using our services.',
+      canonical: '/portfolio',
+    },
+    canActivate: [authGuard],
+  },
+  {
+    path: 'servicesDashboard',
+    loadComponent: () =>
+      import('./page/dashboard/services/services').then(c => c.Services),
+    title: 'Services',
+    data: {
+      description: 'Read our services page for using our services.',
+      canonical: '/services',
+    },
+  },
+  {
+    path: 'aboutDashboard',
+    loadComponent: () =>
+      import('./page/dashboard/about/about').then(c => c.About),
+    title: 'About',
+    data: {
+      description: 'Read our about page for using our services.',
+      canonical: '/about',
+    },
+  },
+  {
+    path: 'homeDashboard',
+    loadComponent: () =>
+      import('./page/dashboard/home/home').then(c => c.Home),
+    title: 'Contact',
+    data: {
+      description: 'Read our contact page for using our services.',
+      canonical: '/contact',
     },
   },
  

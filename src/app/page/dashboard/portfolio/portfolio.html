@@ -1,0 +1,63 @@
+<section class="contact-section-4 fix section-padding pt-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header text-white" style="background: #da743f;">
+                        <h4 class="mb-0">Upload Portfolio</h4>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="uploadPortfolio(portfolioForm)" #portfolioForm="ngForm" class="contact-form-items">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="files" class="form-label fw-bold">Select Images or Videos</label>
+                                        <input type="file" name="files" id="files" multiple accept="image/*,video/*"
+                                            (change)="onFileChange($event)" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label fw-bold text-dark">Project Name</label>
+                                        <input type="text" name="name" id="name" ngModel placeholder="Enter project name" required class="form-control" style="color: #000;">
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="tag" class="form-label fw-bold text-dark">Project Type</label>
+                                        <select name="tag" id="tag" ngModel required class="form-select" style="color: #000; background-color: aliceblue;">
+                                            <option value="">Select Type</option>
+                                            <option value="residencial">Residential Work</option>
+                                            <option value="comercial">Commercial Work</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12" *ngIf="previews.length > 0">
+                                    <h5 class="fw-bold">Preview</h5>
+                                    <div class="row g-3">
+                                        <div *ngFor="let preview of previews; let i = index" class="col-md-3 col-sm-6">
+                                            <div class="position-relative">
+                                                <img *ngIf="selectedFiles[i] && selectedFiles[i].type.startsWith('image/')"
+                                                    [src]="preview" alt="Preview" class="img-fluid rounded shadow-sm" style="width: 100%; height: 150px; object-fit: cover;">
+                                                <video *ngIf="selectedFiles[i] && selectedFiles[i].type.startsWith('video/')"
+                                                    [src]="preview" controls class="img-fluid rounded shadow-sm" style="width: 100%; height: 150px;"></video>
+                                                <button type="button" (click)="removeFile(i)" class="btn btn-danger btn-sm position-absolute" style="top: 5px; right: 5px;">&times;</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <button type="submit" class="btn btn-success btn-lg" [disabled]="selectedFiles.length === 0 || loading">
+                                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                        {{ loading ? 'Uploading...' : 'Upload Portfolio' }}
+                                        <i class="fas fa-upload ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

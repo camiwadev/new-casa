@@ -1,0 +1,110 @@
+<section class="contact-section-4 fix section-padding pt-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-4">
+                    <h1 class="display-4 fw-bold text-dark">Services</h1>
+                    <button *ngIf="!showForm" (click)="toggleForm()" class="btn btn-lg mt-3" style="background-color: #da743f;">
+                        <i class="fas fa-plus me-2"></i>Add Service
+                    </button>
+                </div>
+
+                <!-- Form Section -->
+                <div *ngIf="showForm" class="mb-5">
+                    <div class="card shadow-lg">
+                        <div class="card-header text-white" style="background: #da743f;">
+                            <h4 class="mb-0">Upload Service</h4>
+                        </div>
+                        <div class="card-body">
+                            <form (ngSubmit)="uploadService(servicesForm)" #servicesForm="ngForm" class="contact-form-items">
+                                <div class="row g-4">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="files" class="form-label fw-bold">Select Images</label>
+                                            <input type="file" name="files" id="files" multiple accept="image/*"
+                                                (change)="onFileChange($event)" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="name" class="form-label fw-bold text-dark">Service Name</label>
+                                            <input type="text" name="name" id="name" ngModel placeholder="Enter service name" required class="form-control" style="color: #000;">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="description" class="form-label fw-bold text-dark">Description</label>
+                                            <input type="text" name="description" id="description" ngModel placeholder="Enter description" required class="form-control" style="color: #000;">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="form-label fw-bold text-dark">Service Items</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" [(ngModel)]="newItem" placeholder="Add item" class="form-control" style="color: #000;" [ngModelOptions]="{standalone: true}">
+                                                <button type="button" (click)="addItem()" class="btn btn-outline-primary">Add Item</button>
+                                            </div>
+                                            <ul class="list-group" *ngIf="items.length > 0">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items; let i = index">
+                                                    {{ item }}
+                                                    <button type="button" (click)="removeItem(i)" class="btn btn-danger btn-sm">&times;</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" *ngIf="previews.length > 0">
+                                        <h5 class="fw-bold">Preview</h5>
+                                        <div class="row g-3">
+                                            <div *ngFor="let preview of previews; let i = index" class="col-md-3 col-sm-6">
+                                                <div class="position-relative">
+                                                    <img *ngIf="selectedFiles[i] && selectedFiles[i].type.startsWith('image/')"
+                                                        [src]="preview" alt="Preview" class="img-fluid rounded shadow-sm" style="width: 100%; height: 150px; object-fit: cover;">
+                                                    <button type="button" (click)="removeFile(i)" class="btn btn-danger btn-sm position-absolute" style="top: 5px; right: 5px;">&times;</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 text-center">
+                                        <button type="submit" class="btn btn-success btn-lg" [disabled]="selectedFiles.length === 0 || loading">
+                                            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                            {{ loading ? 'Uploading...' : 'Upload Service' }}
+                                            <i class="fas fa-upload ms-2"></i>
+                                        </button>
+                                        <button type="button" (click)="toggleForm()" class="btn btn-secondary btn-lg ms-3">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services List -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <h3 class="text-center mb-4">Existing Services</h3>
+                        <div class="row g-4" *ngIf="services.length > 0; else noServices">
+                            <div class="col-md-4" *ngFor="let service of services">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ service.name }}</h5>
+                                        <p class="card-text">{{ service.description }}</p>
+                                        <h6>Items:</h6>
+                                        <ul class="list-unstyled">
+                                            <li *ngFor="let item of service.items">{{ item }}</li>
+                                        </ul>
+                                        <div *ngIf="service.images && service.images.length > 0">
+                                            <img [src]="authService.fileUrl(service, service.images[0])" alt="Service Image" class="img-fluid rounded mt-2" style="max-height: 150px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #noServices>
+                            <p class="text-center text-muted">No services added yet.</p>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,71 +1,3 @@
-<!-- <section class="hero-section hero-3 fix">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6">
-                <div class="hero-content">
-                    <span class="wow fadeInUp">Welcome</span>
-                    <h1 class="wow fadeInUp" data-wow-delay=".3s">Casa Wallpaper</h1>
-                    <p class="wow fadeInUp" data-wow-delay=".5s">
-                        Transform your space with expert wallpaper installations.
-                        Elegant, impeccable and tailored to your unique taste.
-                    </p>
-                    <div class="hero-button">
-
-                        <a class="theme-btn radius-none padding-style wow fadeInUp" data-wow-delay=".7s"
-                            (click)="router.navigate(['/gallery'])">
-                            View Works
-                            <i class="fas fa-long-arrow-right"></i>
-                        </a>
-                        <div class="icon-items wow fadeInUp" data-wow-delay=".9s">
-                            <div class="icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="content">
-                                <p>Call Us Now</p>
-                                <h4>
-                                    <button class="fab" (click)="toggleMenu($event)">
-
-                                        <span class="phone-number">(919) 885-5401</span>
-                                    </button>
-
-                                </h4>
-                                <div class="fab-menu" [class.show]="menuOpen">
-                                    <button (click)="sendSMS()">Send SMS</button>
-                                    <button (click)="makeCall()">Make Call</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="hero-slider-items">                    
-                    <div class="swiper hero-slider" id="heroSwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="hero-image">
-                                    <img src="assets/img/hero/03.jpg" alt="hero-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="hero-image">
-                                    <img src="assets/img/hero/04.jpg" alt="hero-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="hero-image">
-                                    <img src="assets/img/hero/05.jpg" alt="hero-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  -->
 <section class="hero-section hero-1">
 
     <div class="hero-image-2 wow fadeInUp" data-wow-delay=".4s">
@@ -232,10 +164,12 @@
         <div class="section-title text-center">
             <span class="wow fadeInUp">Recent Projects</span>
             <h2 class="wow fadeInUp" data-wow-delay=".3s">Elevate Your Home's Design <br> with Interior Mastery</h2>
+                                        <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">Ver todos los proyectos</span></a>
+
         </div>
     </div>
-    <div class="project-wrapper">
-        <div class="swiper project-slider">
+    <div class="project-wrapper" >
+        <div class="swiper project-slider" >
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide">
@@ -274,6 +208,8 @@
             </div>
             <div class="swiper-dot">
                 <div class="dot"></div>
+                            <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">Ver todos los proyectos</span></a>
+
             </div>
         </div>
     </div>
@@ -711,26 +647,7 @@
                             </h2>
                         </div>
                         <div class="row g-4">
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="service-items mt-4">
-                                    <div class="icon">
-                                        <i class="flaticon-paint-roller-1"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h3>
-                                            <a (click)="router.navigate(['/services1'])">Interior Painting </a>
-                                        </h3>
-                                        <p>
-                                            Transform the look of your home. Whether you want to revitalize a single
-                                            room or completely renovate your entire home, our team provides results that
-                                            impeccably reflect your style and vision.
-                                        </p>
-                                        <a (click)="router.navigate(['/services1'])" class="link-btn">
-                                            See details <i class="fas fa-long-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                                 <div class="service-items">
                                     <div class="icon">
@@ -769,6 +686,26 @@
                                         </p>
                                         <a (click)="router.navigate(['/services3'])" class="link-btn">
                                             Uncover Details <i class="fas fa-long-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                                <div class="service-items mt-4">
+                                    <div class="icon">
+                                        <i class="flaticon-paint-roller-1"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h3>
+                                            <a (click)="router.navigate(['/services1'])">Interior Painting </a>
+                                        </h3>
+                                        <p>
+                                            Transform the look of your home. Whether you want to revitalize a single
+                                            room or completely renovate your entire home, our team provides results that
+                                            impeccably reflect your style and vision.
+                                        </p>
+                                        <a (click)="router.navigate(['/services1'])" class="link-btn">
+                                            See details <i class="fas fa-long-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>

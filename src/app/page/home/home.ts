@@ -1,7 +1,7 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, HostListener, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 declare var Swiper: any;
@@ -10,7 +10,7 @@ declare var WOW: any;
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -33,7 +33,8 @@ form = {
     projectType: '',
     message: ''
   };
-  constructor(public router: Router, private formBuilder: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient) {
+  constructor(public router: Router, private formBuilder: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient,
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     {
       this.ngFormRequest = this.formBuilder.group({

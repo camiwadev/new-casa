@@ -1,10 +1,10 @@
-<div class="header-top-section section-bg fix" >
+<div class="header-top-section section-bg fix">
     <div class="container">
         <div class="header-top-wrapper">
             <ul class="contact-list">
                 <li>
                     <i class="fas fa-map-marker-alt"></i>
-                   Raleigh, NC 
+                    Raleigh, NC
                 </li>
             </ul>
             <div class="top-right">
@@ -14,8 +14,9 @@
                     </li>
                 </ul>
                 <div class="social-icon d-flex align-items-center">
-                    <a href="https://www.instagram.com/casaimproveme/" target="_blank"><i class="fab fa-instagram-f"></i></a>
-                    
+                    <a href="https://www.instagram.com/casaimproveme/" target="_blank"><i
+                            class="fab fa-instagram-f"></i></a>
+
                 </div>
             </div>
         </div>
@@ -29,22 +30,22 @@
                 <div class="header-main">
                     <div class="header-left">
                         <div class="logo">
-                            <a (click)="router.navigate(['/home'])" class="header-logo-2">
+                            <a routerLink="/home" class="header-logo-2">
                                 <img src="assets/img/logo/header-logo.png" alt="logo-img">
-                           </a>
+                            </a>
                         </div>
                         <div class="mean__menu-wrapper">
                             <div class="main-menu">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        <li class=" active menu-thumb">
-                                            <a (click)="router.navigate(['/home'])" >
-                                            Home 
+                                        <li >
+                                            <a routerLink="/home">
+                                                Home
                                             </a>
                                         </li>
-                                      
+
                                         <li>
-                                            <a (click)="router.navigate(['/about'])">About</a>
+                                            <a routerLink="/about">About</a>
                                         </li>
                                         <li>
                                             <a>
@@ -52,24 +53,28 @@
                                                 <i class="fas fa-angle-down"></i>
                                             </a>
                                             <ul class="submenu">
-                                                <li><a (click)="router.navigate(['/services2'])">Wallpaper installation or repair</a></li>
-                                                <li><a (click)="router.navigate(['/services3'])">Wallpaper removal</a></li>
-                                                <li><a (click)="router.navigate(['/services1'])">Interior Painting</a></li>
+                                                <li><a routerLink="/services2">Wallpaper installation or repair</a></li>
+                                                <li><a routerLink="/services3">Wallpaper removal</a></li>
+                                                <li><a routerLink="/services1">Interior Painting</a></li>
 
                                             </ul>
                                         </li>
                                         <li>
-                                            <a (click)="router.navigate(['/gallery'])">
+                                            <a routerLink="/gallery">
                                                 Portfolio
-                                              
+
                                             </a>
-                                           
-                                        </li>
-                                       <li>
-                                            <a (click)="router.navigate(['/faqs'])">FAQs</a>
+
                                         </li>
                                         <li>
-                                            <a (click)="router.navigate(['/contact'])">Contact</a>
+                                            <a routerLink="/faqs">FAQs</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/contact">Contact</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/homeDashboard">Admin</a>
+
                                         </li>
                                     </ul>
                                 </nav>
@@ -77,30 +82,26 @@
                         </div>
                     </div>
                     <div class="header-right d-flex justify-content-end align-items-center">
-                     <a class="search-trigger search-icon">
-                        <button class="fab" >
-                            <i class="fal fa-envelope"></i>
-                            <h4 class="phone-number">admin&#64;casainstall.com</h4> 
-                        </button>
-                    </a>
-                        
-                       <a class="search-trigger search-icon">
-                        <button class="fab" (click)="toggleMenu($event)">
-                            <i class="fal fa-phone-alt"></i>
-                            <h4 class="phone-number">919 885-5401</h4> 
-                        </button>
-                        <div class="fab-menu" [class.show]="menuOpen">
-                            <button (click)="sendSMS()">Send SMS</button>
-                            <button (click)="makeCall()">Make Call</button>
-                        </div>
-                    </a>
-                    
-                    
-                       
-                       
+                        <a class="search-trigger search-icon">
+                            <button class="fab">
+                                <i class="fal fa-envelope"></i>
+                                <h4 class="phone-number">admin&#64;casainstall.com</h4>
+                            </button>
+                        </a>
+
+                        <a class="search-trigger search-icon">
+                            <button class="fab" (click)="toggleMenu($event)">
+                                <i class="fal fa-phone-alt"></i>
+                                <h4 class="phone-number">919 885-5401</h4>
+                            </button>
+                            <div class="fab-menu" [class.show]="menuOpen">
+                                <button (click)="sendSMS()">Send SMS</button>
+                                <button (click)="makeCall()">Make Call</button>
+                            </div>
+                        </a>
                         <div class="header__hamburger d-xl-block my-auto">
                             <div class="sidebar__toggle">
-                               <img src="assets/img/bar.png" alt="img">
+                                <img src="assets/img/bar.png" alt="img">
                             </div>
                         </div>
                     </div>

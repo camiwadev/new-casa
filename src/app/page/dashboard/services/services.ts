@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ServicesService } from '../../../services/services.service';
@@ -20,7 +20,9 @@ export class Services implements OnInit {
   services: any[] = [];
   showForm = false;
 
-  constructor(private servicesService: ServicesService, public authService: AuthPocketbaseService) {}
+  constructor(private servicesService: ServicesService, public authService: AuthPocketbaseService,
+     private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.loadServices();
@@ -33,6 +35,7 @@ export class Services implements OnInit {
         ...service,
         items: typeof service['items'] === 'string' ? JSON.parse(service['items']) : service['items']
       }));
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Error loading services:', error);
     }

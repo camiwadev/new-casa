@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RealtimePortfolioService } from '../../services/portfolio-realtime.service';
-import { Subscription } from 'rxjs';
-import { Portfolio } from '../../models/portfolio.interface';
+import { ChangeDetectorRef } from '@angular/core';
+import { PortfolioService } from '../../services/portfolio.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gallery',
@@ -14,47 +12,29 @@ import { Portfolio } from '../../models/portfolio.interface';
   templateUrl: './gallery.html',
   styleUrl: './gallery.scss',
 })
-export class Gallery implements OnInit, OnDestroy {
-  isBrowser: boolean = false;
-  portfolios: Portfolio[] = [];
-  filteredPortfolios: Portfolio[] = [];
-  private subscription: Subscription = new Subscription();
+export class Gallery implements OnInit {
+  portfolios: any[] = [];
+  filteredPortfolios: any[] = [];
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    public router: Router,
-    private realtimePortfolioService: RealtimePortfolioService
-  ) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
+  constructor(private portfolioService: PortfolioService, public router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    if (!this.isBrowser) return;
-
-    window.scrollTo(0, 0);
-
-    // Subscribe to portfolio updates
-    this.subscription.add(
-      this.realtimePortfolioService.portfolios$.subscribe(portfolios => {
-        this.portfolios = portfolios;
-        this.filteredPortfolios = portfolios; // Initially show all
-      })
-    );
+    this.loadPortfolios();
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  async loadPortfolios() {
+    try {
+      this.portfolios = await this.portfolioService.getPortfolios();
+      this.filteredPortfolios = this.portfolios;
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Error loading portfolios:', error);
+    }
   }
 
-  ngAfterViewInit(): void {
-    if (!this.isBrowser) return;
-
-    window.scrollTo(0, 0);
-  }
-
-  getImageUrl(portfolio: Portfolio): string {
+  getImageUrl(portfolio: any): string {
     if (portfolio.images && portfolio.images.length > 0) {
-      return this.realtimePortfolioService.getFileUrl(portfolio, portfolio.images[0]);
+      return this.portfolioService.fileUrl(portfolio, portfolio.images[0]) || '';
     }
     return '';
   }
@@ -65,5 +45,37 @@ export class Gallery implements OnInit, OnDestroy {
     } else {
       this.filteredPortfolios = this.portfolios.filter(portfolio => portfolio.tag === type);
     }
+  }
+
+  viewImage(portfolio: any, index: number = 0): void {
+    const images = portfolio.images || [];
+    if (images.length === 0) return;
+
+    const imageUrl = this.portfolioService.fileUrl(portfolio, images[index]);
+    const title = images.length > 1 ? `${portfolio.name} (${index + 1}/${images.length})` : portfolio.name;
+
+    const config: any = {
+      title: title,
+      imageUrl: imageUrl,
+      imageAlt: portfolio.name,
+      showCloseButton: true,
+      showConfirmButton: false,
+      width: '80%',
+    };
+
+    if (images.length > 1) {
+      config.showConfirmButton = index < images.length - 1;
+      config.confirmButtonText = 'Next';
+      config.showDenyButton = index > 0;
+      config.denyButtonText = 'Previous';
+    }
+
+    Swal.fire(config).then((result) => {
+      if (result.isConfirmed && index < images.length - 1) {
+        this.viewImage(portfolio, index + 1);
+      } else if (result.isDenied && index > 0) {
+        this.viewImage(portfolio, index - 1);
+      }
+    });
   }
 }

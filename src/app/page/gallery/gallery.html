@@ -31,9 +31,9 @@
 
         <div class="row g-4 portfolio-items-wrapper">
             <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6" *ngFor="let portfolio of filteredPortfolios">
-                <div class="portfolio-items">
-                    <div class="portfolio-image bg-cover"
-                        [style.background-image]="'url(' + getImageUrl(portfolio) + ')'">
+                <div class="portfolio-items" (click)="viewImage(portfolio)">
+                    <div class="portfolio-image">
+                        <img [src]="getImageUrl(portfolio)" alt="{{ portfolio.name }}" class="img-fluid">
                         <div class="portfolio-content">
                             <span>{{ portfolio.name }}</span>
                             <h3>

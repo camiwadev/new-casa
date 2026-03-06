@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PortfolioService } from '../../../services/portfolio.service';
@@ -18,7 +18,9 @@ export class Portfolio implements OnInit {
   portfolios: any[] = [];
   showForm = false;
 
-  constructor(public portfolioService: PortfolioService, public authService: AuthPocketbaseService) {}
+  constructor(public portfolioService: PortfolioService, public authService: AuthPocketbaseService,
+     private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.loadPortfolios();
@@ -31,6 +33,7 @@ export class Portfolio implements OnInit {
         ...portfolio,
         tag: typeof portfolio['tag'] === 'string' ? portfolio['tag'] : portfolio['tag']
       }));
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Error loading portfolios:', error);
     }

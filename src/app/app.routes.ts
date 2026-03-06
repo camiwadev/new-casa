@@ -27,7 +27,6 @@ export const routes: Routes = [
     data: {
       description: 'Transform your space with expert wallpaper installations.',
       canonical: '/',
-      canActivate: [authGuard],
     },
   },
   {
@@ -149,7 +148,6 @@ export const routes: Routes = [
       description: 'Read our portfolio page for using our services.',
       canonical: '/portfolio',
     },
-    canActivate: [authGuard],
   },
   {
     path: 'servicesDashboard',
@@ -175,7 +173,7 @@ export const routes: Routes = [
     path: 'homeDashboard',
     loadComponent: () =>
       import('./page/dashboard/home/home').then(c => c.Home),
-    title: 'Contact',
+    title: 'Dashboard',
     data: {
       description: 'Read our contact page for using our services.',
       canonical: '/contact',

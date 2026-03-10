@@ -1237,7 +1237,7 @@ input.main-search-input::placeholder {
   color: var(--header);
 }
 .header-1.header-2 .mega-menu-wrapper .header-main .header-right {
-  gap: 40px;
+  gap: 10px;
 }
 @media (max-width: 1399px) {
   .header-1.header-2 .mega-menu-wrapper .header-main .header-right .header-button {
@@ -4115,7 +4115,7 @@ input.main-search-input::placeholder {
   border: 1px solid var(--border);
   padding: 40px;
   border-radius: 5px;
-  margin: -150px 40px 0;
+  margin: -550px 40px 0;
   position: relative;
   z-index: 9;
 }

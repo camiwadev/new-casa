@@ -4,13 +4,11 @@ import { Home } from './page/home/home';
 import { Terms } from './page/terms/terms';
 import { Contact } from './page/contact/contact';
 import { About } from './page/about/about';
-import { Services1 } from './page/services1/services1';
-import { Services2 } from './page/services2/services2';
-import { Services3 } from './page/services3/services3';
 import { Gallery } from './page/gallery/gallery';
 import { Policy } from './page/policy/policy';
 import { Faqs } from './page/faqs/faqs';
 import { Calculator } from './page/calculator/calculator';
+
 
 
 export const routes: Routes = [
@@ -60,36 +58,6 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'services1',
-    loadComponent: () =>
-      import('./page/services1/services1').then(c => c.Services1),
-    title: 'Services',
-    data: {
-      description: 'Read our services page for using our services.',
-      canonical: '/services1',
-    },
-  },
-  {
-    path: 'services2',
-    loadComponent: () =>
-      import('./page/services2/services2').then(c => c.Services2),
-    title: 'Services',
-    data: {
-      description: 'Read our services page for using our services.',
-      canonical: '/services2',
-    },
-  },
-  {
-    path: 'services3',
-    loadComponent: () =>
-      import('./page/services3/services3').then(c => c.Services3),
-    title: 'Services',
-    data: {
-      description: 'Read our services page for using our services.',
-      canonical: '/services3',
-    },
-  },
-  {
     path: 'gallery',
     loadComponent: () =>
       import('./page/gallery/gallery').then(c => c.Gallery),
@@ -129,16 +97,7 @@ export const routes: Routes = [
       canonical: '/calculator',
     },
   },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./page/login/login').then(c => c.Login),
-    title: 'Login',
-    data: {
-      description: 'Read our login page for using our services.',
-      canonical: '/login',
-    },
-  },
+  
   {
     path: 'portfolioDashboard',
     loadComponent: () =>
@@ -179,7 +138,17 @@ export const routes: Routes = [
       canonical: '/contact',
     },
   },
- 
+  {
+    path: 'servicesDetail',
+    loadComponent: () =>
+      import('./page/services-detail/services-detail').then(c => c.ServicesDetail),
+    title: 'Service Detail',
+    data: {
+      description: 'Service detail page.',
+      canonical: '/servicesDetail',
+    },
+  },
+   
   {
     path: '**',
     redirectTo: 'home'

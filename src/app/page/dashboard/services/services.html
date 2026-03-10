@@ -26,18 +26,41 @@
                                             <small *ngIf="isEditing" class="text-muted">Leave empty to keep existing images, or add new ones to append to the current service. Click on existing images to mark/unmark them for deletion.</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="name" class="form-label fw-bold text-dark">Service Name</label>
                                             <input type="text" name="name" id="name" [(ngModel)]="formData.name" placeholder="Enter service name" required class="form-control" style="color: #000;">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-8">
                                         <div class="form-group">
                                             <label for="description" class="form-label fw-bold text-dark">Description</label>
-                                            <input type="text" name="description" id="description" [(ngModel)]="formData.description" placeholder="Enter description" required class="form-control" style="color: #000;">
+                                            <textarea name="description" id="description" [(ngModel)]="formData.description" placeholder="Enter description" required class="form-control" style="color: #000;" rows="4"></textarea>
                                         </div>
                                     </div>
+                                    
+                                     <div class="col-lg-12" *ngIf="isEditing">
+                                        <div class="form-group">
+                                            <label class="form-label fw-bold text-dark">Lidescription Items</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" [(ngModel)]="newLidescriptionItem" placeholder="Add lidescription item" class="form-control" style="color: #000;" [ngModelOptions]="{standalone: true}">
+                                                <button type="button" (click)="addLidescriptionItem()" class="btn btn-outline-primary">Add Item</button>
+                                            </div>
+                                            <ul class="list-group" *ngIf="lidescription.length > 0">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of lidescription; let i = index">
+                                                    {{ item }}
+                                                    <button type="button" (click)="removeLidescriptionItem(i)" class="btn btn-danger btn-sm">&times;</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" *ngIf="isEditing">
+                                        <div class="form-group">
+                                            <label for="preitems" class="form-label fw-bold text-dark">Pre items</label>
+                                            <textarea name="preitems" id="preitems" [(ngModel)]="formData.preitems" placeholder="Enter preitems" required class="form-control" style="color: #000;" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label class="form-label fw-bold text-dark">Service Items</label>

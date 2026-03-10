@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthPocketbaseService } from '../../../services/auth.service';
 
 @Component({
@@ -9,9 +9,10 @@ import { AuthPocketbaseService } from '../../../services/auth.service';
   styleUrl: './home.scss',
 })
 export class Home {
-  constructor(private authService: AuthPocketbaseService) {}
+  constructor(private authService: AuthPocketbaseService, private router: Router) {}
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

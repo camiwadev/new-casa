@@ -48,9 +48,7 @@ export class AuthPocketbaseService {
     this.pb.authStore.clear();
     localStorage.clear();
       localStorage.removeItem('user');
-    if (this.router) {
-      this.router.navigate(['/login']);
-    }
+    // Navigation is handled by the component
   }
 
 

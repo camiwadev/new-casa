@@ -59,3 +59,18 @@
 .commercial-tag {
     background-color: #da743f; 
 }
+.portfolio-image {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* mantiene todas iguales */
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* recorta para llenar */
+  object-position: center; /* centra el recorte */
+  display: block;
+}

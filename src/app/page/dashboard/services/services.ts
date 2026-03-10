@@ -17,6 +17,10 @@ export class Services implements OnInit {
   loading = false;
   items: string[] = [];
   newItem: string = '';
+  descriptionItems: string[] = [];
+  newDescriptionItem: string = '';
+  lidescription: string[] = [];
+  newLidescriptionItem: string = '';
   services: any[] = [];
   showForm = false;
   isEditing = false;
@@ -25,7 +29,8 @@ export class Services implements OnInit {
   // Form data for editing
   formData = {
     name: '',
-    description: ''
+    description: '',
+    preitems:''
   };
 
   @ViewChild('servicesForm') servicesForm!: NgForm;
@@ -45,7 +50,9 @@ export class Services implements OnInit {
       const services = await this.servicesService.getServices();
       this.services = services.map(service => ({
         ...service,
-        items: typeof service['items'] === 'string' ? JSON.parse(service['items']) : service['items']
+        items: typeof service['items'] === 'string' ? JSON.parse(service['items']) : service['items'],
+        descriptionItems: typeof service['descriptionItems'] === 'string' ? JSON.parse(service['descriptionItems']) : service['descriptionItems'],
+        lidescription: typeof service['lidescription'] === 'string' ? JSON.parse(service['lidescription']) : service['lidescription']
       }));
       this.cdr.detectChanges();
     } catch (error) {
@@ -117,6 +124,28 @@ export class Services implements OnInit {
     this.items.splice(index, 1);
   }
 
+  addDescriptionItem() {
+    if (this.newDescriptionItem.trim()) {
+      this.descriptionItems.push(this.newDescriptionItem.trim());
+      this.newDescriptionItem = '';
+    }
+  }
+
+  removeDescriptionItem(index: number) {
+    this.descriptionItems.splice(index, 1);
+  }
+
+  addLidescriptionItem() {
+    if (this.newLidescriptionItem.trim()) {
+      this.lidescription.push(this.newLidescriptionItem.trim());
+      this.newLidescriptionItem = '';
+    }
+  }
+
+  removeLidescriptionItem(index: number) {
+    this.lidescription.splice(index, 1);
+  }
+
   toggleForm() {
     this.showForm = !this.showForm;
     this.isEditing = false;
@@ -125,8 +154,11 @@ export class Services implements OnInit {
     this.previews = [];
     this.items = [];
     this.newItem = '';
-    this.formData = { name: '', description: '' };
-    this.imagesToDelete = [];
+    this.descriptionItems = [];
+    this.newDescriptionItem = '';
+    this.lidescription = [];
+    this.newLidescriptionItem = '';
+    this.formData = { name: '', description: '', preitems: ''};
   }
 
   async deleteService(service: any) {
@@ -166,9 +198,16 @@ export class Services implements OnInit {
     // Populate form data
     this.formData.name = service.name || '';
     this.formData.description = service.description || '';
+    this.formData.preitems = service.preitems || '';
 
     // Populate items
     this.items = [...(service.items || [])];
+
+    // Populate descriptionItems
+    this.descriptionItems = [...(service.descriptionItems || [])];
+
+    // Populate lidescription
+    this.lidescription = [...(service.lidescription || [])];
 
     // Populate existing images as previews
     if (service.images && service.images.length > 0) {
@@ -205,7 +244,11 @@ export class Services implements OnInit {
     this.previews = [];
     this.items = [];
     this.newItem = '';
-    this.formData = { name: '', description: '' };
+    this.descriptionItems = [];
+    this.newDescriptionItem = '';
+    this.lidescription = [];
+    this.newLidescriptionItem = '';
+    this.formData = { name: '', description: '', preitems: '' };
     this.imagesToDelete = [];
   }
 
@@ -236,7 +279,10 @@ export class Services implements OnInit {
         const updateData: any = {
           name,
           description,
-          items: JSON.stringify(this.items)
+          preitems: this.formData.preitems,
+          items: JSON.stringify(this.items),
+          descriptionItems: JSON.stringify(this.descriptionItems),
+          lidescription: JSON.stringify(this.lidescription)
         };
 
         if (newFiles.length > 0 || this.imagesToDelete.length > 0) {
@@ -244,7 +290,10 @@ export class Services implements OnInit {
           const formData = new FormData();
           formData.append('name', name);
           formData.append('description', description);
+          formData.append('preitems', this.formData.preitems);
           formData.append('items', JSON.stringify(this.items));
+          formData.append('descriptionItems', JSON.stringify(this.descriptionItems));
+          formData.append('lidescription', JSON.stringify(this.lidescription));
 
           // Add remaining existing images (if any still exist)
           if (remainingImages.length > 0) {
@@ -281,7 +330,10 @@ export class Services implements OnInit {
         await this.servicesService.createService(
           name,
           description,
+          this.formData.preitems,
           this.items,
+          this.descriptionItems,
+          this.lidescription,
           this.selectedFiles
         );
 
@@ -293,11 +345,13 @@ export class Services implements OnInit {
       }
 
       // Reset form and close
-      this.selectedFiles = [];
-      this.previews = [];
       this.items = [];
       this.newItem = '';
-      this.formData = { name: '', description: '' };
+      this.descriptionItems = [];
+      this.newDescriptionItem = '';
+      this.lidescription = [];
+      this.newLidescriptionItem = '';
+      this.formData = { name: '', description: '', preitems:'' };
       this.imagesToDelete = []; // Reset images to delete
       if (this.servicesForm) {
         this.servicesForm.resetForm();

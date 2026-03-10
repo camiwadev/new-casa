@@ -30,7 +30,7 @@
                 <div class="header-main">
                     <div class="header-left">
                         <div class="logo">
-                            <a routerLink="/home" class="header-logo-2">
+                            <a href="javascript:void(0)" class="header-logo-2" (click)="navigate('/home')">
                                 <img src="assets/img/logo/header-logo.png" alt="logo-img">
                             </a>
                         </div>
@@ -39,41 +39,40 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li >
-                                            <a routerLink="/home">
+                                            <a href="javascript:void(0)" (click)="navigate('/home')">
                                                 Home
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a routerLink="/about">About</a>
+                                            <a href="javascript:void(0)" (click)="navigate('/about')">About</a>
                                         </li>
                                         <li>
-                                            <a>
+                                            <a href="javascript:void(0)" (click)="toggleServicesDropdown($event)" [class.active]="servicesDropdownOpen">
                                                 Services
                                                 <i class="fas fa-angle-down"></i>
                                             </a>
-                                            <ul class="submenu">
-                                                <li><a routerLink="/services2">Wallpaper installation or repair</a></li>
-                                                <li><a routerLink="/services3">Wallpaper removal</a></li>
-                                                <li><a routerLink="/services1">Interior Painting</a></li>
-
+                                            <ul class="submenu" [class.show]="servicesDropdownOpen">
+                                                <li><a href="javascript:void(0)" (click)="navigateAndCloseDropdown('/services2')">Wallpaper installation or repair</a></li>
+                                                <li><a href="javascript:void(0)" (click)="navigateAndCloseDropdown('/services3')">Wallpaper removal</a></li>
+                                                <li><a href="javascript:void(0)" (click)="navigateAndCloseDropdown('/services1')">Interior Painting</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a routerLink="/gallery">
+                                            <a href="javascript:void(0)" (click)="navigate('/gallery')">
                                                 Portfolio
 
                                             </a>
 
                                         </li>
                                         <li>
-                                            <a routerLink="/faqs">FAQs</a>
+                                            <a href="javascript:void(0)" (click)="navigate('/faqs')">FAQs</a>
                                         </li>
                                         <li>
-                                            <a routerLink="/contact">Contact</a>
+                                            <a href="javascript:void(0)" (click)="navigate('/contact')">Contact</a>
                                         </li>
                                         <li>
-                                            <a routerLink="/homeDashboard">Admin</a>
+                                            <a href="javascript:void(0)" (click)="navigate('/homeDashboard')">Admin</a>
 
                                         </li>
                                     </ul>

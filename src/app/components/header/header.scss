@@ -87,3 +87,60 @@
 .fab-menu button:hover {
     background-color: #f0f0f0;
 }
+
+// Dropdown menu styles
+.header-main .main-menu ul li .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: var(--white);
+    z-index: 99999;
+    visibility: hidden;
+    opacity: 0;
+    transform-origin: top center;
+    color: var(--header);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    transform: translateY(10px);
+    transition: all 0.4s ease-in-out;
+    display: none;
+}
+
+.header-main .main-menu ul li:hover > .submenu,
+.header-main .main-menu ul li .submenu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    display: block;
+}
+
+.header-main .main-menu ul li .submenu li {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header-main .main-menu ul li .submenu li a {
+    position: relative;
+    z-index: 11;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--header);
+    padding: 0 25px;
+    padding-bottom: 11px;
+    padding-top: 11px;
+    width: 100%;
+    border-bottom: 1px solid #eeeeee;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.header-main .main-menu ul li .submenu li:last-child a {
+    border: none;
+}
+
+.header-main .main-menu ul li .submenu li:hover a {
+    background: var(--theme);
+    color: var(--white) !important;
+}

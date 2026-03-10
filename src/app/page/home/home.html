@@ -164,51 +164,32 @@
         <div class="section-title text-center">
             <span class="wow fadeInUp">Recent Projects</span>
             <h2 class="wow fadeInUp" data-wow-delay=".3s">Elevate Your Home's Design <br> with Interior Mastery</h2>
-                                        <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">Ver todos los proyectos</span></a>
+                                        <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">View all</span></a>
 
         </div>
     </div>
     <div class="project-wrapper" >
         <div class="swiper project-slider" >
             <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
+                <div class="swiper-slide" *ngFor="let portfolio of filteredPortfolios">
                     <div class="project-carousel-items">
                         <div class="project-image">
-                            <img src="assets/img/project/01.jpg" alt="project-img">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="project-carousel-items">
-                        <div class="project-image">
-                            <img src="assets/img/project/02.jpg" alt="project-img">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="project-carousel-items">
-                        <div class="project-image">
-                            <img src="assets/img/project/03.jpg" alt="project-img">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="project-carousel-items">
-                        <div class="project-image">
-                            <img src="assets/img/project/04.jpg" alt="project-img">
-
+                            <img [src]="getImageUrl(portfolio)" alt="{{ portfolio.name }}" (click)="viewImage(portfolio)">
+                            <div class="portfolio-content">
+                                <span>{{ portfolio.name }}</span>
+                                <h3>
+                                    <span class="tag-badge" [ngClass]="portfolio.tag === 'residencial' ? 'residential-tag' : 'commercial-tag'">
+                                        {{ portfolio.tag }}
+                                    </span>
+                                </h3>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="swiper-dot">
                 <div class="dot"></div>
-                            <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">Ver todos los proyectos</span></a>
+                            <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">View all</span></a>
 
             </div>
         </div>
